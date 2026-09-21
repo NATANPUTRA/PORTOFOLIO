@@ -5,109 +5,294 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Natan Putra — Backend & Web Developer</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+  />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
+  <!-- ==================== LOADING ==================== -->
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+
+      <div class="loader-logo">
+        NP<span>//</span>
+      </div>
+
+      <div class="loader-tech changing" id="loaderTech">
+        <i class="devicon-php-plain"></i>
+      </div>
+
+      <div class="loader-name" id="loaderName">
+        PHP
+      </div>
+
+      <div class="loader-line">
+        <span id="loaderProgress"></span>
+      </div>
+
+      <div class="loader-status">
+        <span>INITIALIZING</span>
+        <span id="loaderPercent">0%</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== NAVBAR ==================== -->
+
   <header class="navbar">
-    <a href="#home" class="logo">NP<span>//</span></a>
+
+    <a href="#home" class="logo">
+      NP<span>//</span>
+    </a>
+
     <nav class="nav-links">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a
-        href="#achievement">Achievement</a><a href="#contact">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievement">Achievement</a>
+      <a href="#contact">Contact</a>
     </nav>
+
     <div class="nav-actions">
       <button id="themeToggle" class="theme-toggle">◐</button>
       <button id="menuToggle" class="menu-toggle">☰</button>
     </div>
+
   </header>
 
+  <!-- ==================== MOBILE MENU ==================== -->
+
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a
-      href="#achievement">Achievement</a><a href="#contact">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievement">Achievement</a>
+    <a href="#contact">Contact</a>
   </div>
 
+  <!-- ==================== MAIN ==================== -->
+
   <main>
+
+    <!-- ==================== HERO ==================== -->
+
     <section class="hero section" id="home">
+
       <div class="hero-left reveal">
-        <div class="eyebrow"><span></span>RPL STUDENT</div>
-        <h1>HELLO,<br /><span>I'M NATAN</span><br />PUTRA.</h1>
-        <p class="hero-role">RPL STUDENT · BACKEND & WEB DEVELOPMENT</p>
+
+        <div class="eyebrow">
+          <span></span>RPL STUDENT
+        </div>
+
+        <h1>
+          HELLO,<br />
+          <span>I'M NATAN</span><br />
+          PUTRA.
+        </h1>
+
+        <p class="hero-role">
+          RPL STUDENT · BACKEND & WEB DEVELOPMENT
+        </p>
+
         <p class="hero-description">
           Saya Natan, siswa RPL dari Malang yang tertarik pada pengembangan
           website dan backend. Saat ini saya sedang memperdalam PHP, Laravel,
           database, serta bagaimana sebuah aplikasi web bekerja di balik
           layar.
         </p>
+
         <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">Lihat Proyek <span>↗</span></a>
-          <a href="assets/cv/Natan-Putra-CV.pdf" class="btn btn-outline" download>Unduh CV <span>↓</span></a>
+
+          <a href="#projects" class="btn btn-primary">
+            Lihat Proyek <span>↗</span>
+          </a>
+
+          <a
+            href="assets/cv/Natan-Putra-CV.pdf"
+            class="btn btn-outline"
+            download
+          >
+            Unduh CV <span>↓</span>
+          </a>
+
         </div>
+
       </div>
 
       <div class="hero-right reveal">
+
         <div class="dashboard-card">
+
           <div class="dashboard-top">
-            <span>01 / PROFILE</span><span>2026</span>
+            <span>01 / PROFILE</span>
+            <span>2026</span>
           </div>
 
           <div class="dashboard-content">
-            <span class="dashboard-small">BACKEND</span>
+
+            <span class="dashboard-small">
+              BACKEND
+            </span>
+
             <h2>WEB</h2>
             <h3>DEVELOPMENT</h3>
 
             <div class="dashboard-info">
-              <div><span>FOCUS</span><strong>BACKEND</strong></div>
-              <div><span>STACK</span><strong>PHP · LARAVEL</strong></div>
-              <div><span>BASED IN</span><strong>MALANG, ID</strong></div>
+
+              <div>
+                <span>FOCUS</span>
+                <strong>BACKEND</strong>
+              </div>
+
+              <div>
+                <span>STACK</span>
+                <strong>PHP · LARAVEL</strong>
+              </div>
+
+              <div>
+                <span>BASED IN</span>
+                <strong>MALANG, ID</strong>
+              </div>
+
             </div>
+
           </div>
 
-          <div class="dashboard-big-letter">N.</div>
-          <div class="dashboard-arrow">↗</div>
+          <div class="dashboard-big-letter">
+            N.
+          </div>
+
+          <div class="dashboard-arrow">
+            ↗
+          </div>
+
         </div>
 
+        <!-- FLOATING SKILL -->
+
         <div class="learning-float">
-          <div class="learning-float-content" id="learningFloatContent">
-            <div class="learning-icon" id="learningIcon">
+
+          <div
+            class="learning-float-content"
+            id="learningFloatContent"
+          >
+
+            <div
+              class="learning-icon"
+              id="learningIcon"
+            >
               <i class="devicon-php-plain"></i>
             </div>
 
             <div>
-              <span class="learning-level" id="learningLevel">BASIC</span>
-              <strong id="learningName">PHP</strong>
+
+              <span
+                class="learning-level"
+                id="learningLevel"
+              >
+                BASIC
+              </span>
+
+              <strong id="learningName">
+                PHP
+              </strong>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
+    <!-- ==================== MARQUEE ==================== -->
+
     <div class="marquee">
+
       <div class="marquee-track">
-        <span>BACKEND DEVELOPMENT</span><b>✦</b><span>WEB
-          DEVELOPMENT</span><b>✦</b><span>PHP</span><b>✦</b><span>LARAVEL</span><b>✦</b><span>MYSQL</span><b>✦</b><span>JAVASCRIPT</span><b>✦</b>
-        <span>BACKEND DEVELOPMENT</span><b>✦</b><span>WEB
-          DEVELOPMENT</span><b>✦</b><span>PHP</span><b>✦</b><span>LARAVEL</span><b>✦</b><span>MYSQL</span><b>✦</b><span>JAVASCRIPT</span><b>✦</b>
+
+        <span>BACKEND DEVELOPMENT</span>
+        <b>✦</b>
+
+        <span>WEB DEVELOPMENT</span>
+        <b>✦</b>
+
+        <span>PHP</span>
+        <b>✦</b>
+
+        <span>LARAVEL</span>
+        <b>✦</b>
+
+        <span>MYSQL</span>
+        <b>✦</b>
+
+        <span>JAVASCRIPT</span>
+        <b>✦</b>
+
+        <span>BACKEND DEVELOPMENT</span>
+        <b>✦</b>
+
+        <span>WEB DEVELOPMENT</span>
+        <b>✦</b>
+
+        <span>PHP</span>
+        <b>✦</b>
+
+        <span>LARAVEL</span>
+        <b>✦</b>
+
+        <span>MYSQL</span>
+        <b>✦</b>
+
+        <span>JAVASCRIPT</span>
+        <b>✦</b>
+
       </div>
+
     </div>
 
+    <!-- ==================== ABOUT ==================== -->
+
     <section class="section about-section" id="about">
+
       <div class="section-heading reveal">
         <span>01</span>
         <h2>ABOUT ME</h2>
       </div>
 
       <div class="about-grid">
+
         <div class="about-intro reveal">
-          <h3>BUILDING MY WAY<br />INTO <span>BACKEND.</span></h3>
+
+          <h3>
+            BUILDING MY WAY<br />
+            INTO <span>BACKEND.</span>
+          </h3>
+
         </div>
 
         <div class="about-text reveal">
+
           <p>
             Saya adalah siswa Rekayasa Perangkat Lunak yang memiliki
             ketertarikan pada pengembangan website, backend, dan bagaimana
@@ -121,256 +306,420 @@
           </p>
 
           <div class="about-facts">
-            <div><span>LOCATION</span><strong>Malang, Indonesia</strong></div>
-            <div><span>EDUCATION</span><strong>SMK · RPL</strong></div>
-            <div><span>FOCUS</span><strong>Backend & Web</strong></div>
+
+            <div>
+              <span>LOCATION</span>
+              <strong>Malang, Indonesia</strong>
+            </div>
+
+            <div>
+              <span>EDUCATION</span>
+              <strong>SMK · RPL</strong>
+            </div>
+
+            <div>
+              <span>FOCUS</span>
+              <strong>Backend & Web</strong>
+            </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
+    <!-- ==================== SKILLS ==================== -->
+
     <section class="section skills-section" id="skills">
+
       <div class="section-heading reveal">
         <span>02</span>
         <h2>TECH STACK</h2>
       </div>
 
       <div class="skill-group reveal">
+
         <div class="group-title">
           <span>01</span>
           <h3>BACKEND</h3>
         </div>
 
         <div class="skill-grid">
+
           <div class="skill-card">
-            <div class="skill-icon"><i class="devicon-php-plain"></i></div>
-            <strong>PHP</strong><small>Basic</small>
+            <div class="skill-icon">
+              <i class="devicon-php-plain"></i>
+            </div>
+            <strong>PHP</strong>
+            <small>Basic</small>
           </div>
 
           <div class="skill-card">
             <div class="skill-icon">
               <i class="devicon-laravel-original"></i>
             </div>
-            <strong>Laravel</strong><small>Intermediate</small>
+            <strong>Laravel</strong>
+            <small>Intermediate</small>
           </div>
 
           <div class="skill-card">
             <div class="skill-icon">
               <i class="devicon-mysql-original"></i>
             </div>
-            <strong>MySQL</strong><small>Basic</small>
+            <strong>MySQL</strong>
+            <small>Basic</small>
           </div>
 
           <div class="skill-card">
-            <div class="skill-icon text-icon">API</div>
-            <strong>REST API</strong><small>Currently Learning</small>
+            <div class="skill-icon text-icon">
+              API
+            </div>
+            <strong>REST API</strong>
+            <small>Currently Learning</small>
           </div>
+
         </div>
+
       </div>
 
       <div class="skill-group reveal">
+
         <div class="group-title">
           <span>02</span>
           <h3>WEB</h3>
         </div>
 
         <div class="skill-grid">
+
           <div class="skill-card">
-            <div class="skill-icon"><i class="devicon-html5-plain"></i></div>
-            <strong>HTML</strong><small>Comfortable</small>
+            <div class="skill-icon">
+              <i class="devicon-html5-plain"></i>
+            </div>
+            <strong>HTML</strong>
+            <small>Comfortable</small>
           </div>
 
           <div class="skill-card">
-            <div class="skill-icon"><i class="devicon-css3-plain"></i></div>
-            <strong>CSS</strong><small>Comfortable</small>
+            <div class="skill-icon">
+              <i class="devicon-css3-plain"></i>
+            </div>
+            <strong>CSS</strong>
+            <small>Comfortable</small>
           </div>
 
           <div class="skill-card">
             <div class="skill-icon">
               <i class="devicon-javascript-plain"></i>
             </div>
-            <strong>JavaScript</strong><small>Basic</small>
+            <strong>JavaScript</strong>
+            <small>Basic</small>
           </div>
 
           <div class="skill-card">
             <div class="skill-icon">
               <i class="devicon-bootstrap-plain"></i>
             </div>
-            <strong>Bootstrap</strong><small>Basic</small>
+            <strong>Bootstrap</strong>
+            <small>Basic</small>
           </div>
+
         </div>
+
       </div>
 
       <div class="skill-group reveal">
+
         <div class="group-title">
           <span>03</span>
           <h3>TOOLS</h3>
         </div>
 
         <div class="tools-grid">
+
           <div class="tool-card">
-            <div class="tool-icon"><i class="devicon-git-plain"></i></div>
-            <div><strong>Git</strong><small>Basic</small></div>
+            <div class="tool-icon">
+              <i class="devicon-git-plain"></i>
+            </div>
+
+            <div>
+              <strong>Git</strong>
+              <small>Basic</small>
+            </div>
           </div>
 
           <div class="tool-card">
             <div class="tool-icon">
               <i class="devicon-github-original"></i>
             </div>
-            <div><strong>GitHub</strong><small>Basic</small></div>
+
+            <div>
+              <strong>GitHub</strong>
+              <small>Basic</small>
+            </div>
           </div>
 
           <div class="tool-card">
-            <div class="tool-icon"><i class="devicon-vscode-plain"></i></div>
-            <div><strong>VS Code</strong><small>Comfortable</small></div>
+            <div class="tool-icon">
+              <i class="devicon-vscode-plain"></i>
+            </div>
+
+            <div>
+              <strong>VS Code</strong>
+              <small>Comfortable</small>
+            </div>
           </div>
 
           <div class="tool-card">
-            <div class="tool-icon text-icon">X</div>
-            <div><strong>XAMPP</strong><small>Basic</small></div>
+            <div class="tool-icon text-icon">
+              X
+            </div>
+
+            <div>
+              <strong>XAMPP</strong>
+              <small>Basic</small>
+            </div>
           </div>
+
         </div>
+
       </div>
+
     </section>
 
+    <!-- ==================== PROJECTS ==================== -->
+
     <section class="section projects-section" id="projects">
+
       <div class="section-heading reveal">
         <span>03</span>
         <h2>PROJECTS</h2>
       </div>
 
       <div class="projects-grid">
+
         <a href="#" class="project-card project-link reveal">
+
           <div class="project-head">
-            <span>01</span><span>WEB DEVELOPMENT</span>
+            <span>01</span>
+            <span>WEB DEVELOPMENT</span>
           </div>
 
           <div class="project-content">
-            <span class="project-stack">HTML · CSS · JAVASCRIPT</span>
+
+            <span class="project-stack">
+              HTML · CSS · JAVASCRIPT
+            </span>
+
             <h3>FISCHMARKET</h3>
+
             <p>
               Web project dengan konsep marketplace ikan yang menggabungkan
               interface interaktif dan berbagai fitur gameplay.
             </p>
+
           </div>
 
           <div class="project-bottom">
-            <span>VIEW PROJECT</span><span>↗</span>
+            <span>VIEW PROJECT</span>
+            <span>↗</span>
           </div>
+
         </a>
 
         <a href="#" class="project-card project-link reveal">
+
           <div class="project-head">
-            <span>02</span><span>PERSONAL PROJECT</span>
+            <span>02</span>
+            <span>PERSONAL PROJECT</span>
           </div>
 
           <div class="project-content">
-            <span class="project-stack">HTML · CSS · JAVASCRIPT</span>
-            <h3>DEVELOPER<br />PORTFOLIO</h3>
+
+            <span class="project-stack">
+              HTML · CSS · JAVASCRIPT
+            </span>
+
+            <h3>
+              DEVELOPER<br />
+              PORTFOLIO
+            </h3>
+
             <p>
               Personal portfolio untuk menampilkan perjalanan belajar,
               project, skill, dan pengalaman saya sebagai siswa RPL.
             </p>
+
           </div>
 
           <div class="project-bottom">
-            <span>VIEW PROJECT</span><span>↗</span>
+            <span>VIEW PROJECT</span>
+            <span>↗</span>
           </div>
+
         </a>
 
         <a href="#" class="project-card project-link reveal">
-          <div class="project-head"><span>03</span><span>BACKEND</span></div>
+
+          <div class="project-head">
+            <span>03</span>
+            <span>BACKEND</span>
+          </div>
 
           <div class="project-content">
-            <span class="project-stack">PHP · LARAVEL · MYSQL</span>
-            <h3>LARAVEL WEB<br />PROJECT</h3>
+
+            <span class="project-stack">
+              PHP · LARAVEL · MYSQL
+            </span>
+
+            <h3>
+              LARAVEL WEB<br />
+              PROJECT
+            </h3>
+
             <p>
               Project web berbasis Laravel untuk mempelajari struktur
               aplikasi, database, routing, dan pengembangan backend.
             </p>
+
           </div>
 
           <div class="project-bottom">
-            <span>VIEW PROJECT</span><span>↗</span>
+            <span>VIEW PROJECT</span>
+            <span>↗</span>
           </div>
+
         </a>
 
         <a href="#" class="project-card project-link reveal">
+
           <div class="project-head">
-            <span>04</span><span class="status">IN PROGRESS</span>
+            <span>04</span>
+            <span class="status">IN PROGRESS</span>
           </div>
 
           <div class="project-content">
-            <span class="project-stack">LARAVEL · PHP · MYSQL · TAILWIND</span>
-            <h3>SISTEM MABAR<br />MENCARI TEMAN</h3>
+
+            <span class="project-stack">
+              LARAVEL · PHP · MYSQL · TAILWIND
+            </span>
+
+            <h3>
+              SISTEM MABAR<br />
+              MENCARI TEMAN
+            </h3>
+
             <p>
               Platform web untuk membantu pengguna menemukan teman mabar
               berdasarkan game seperti PUBG, Mobile Legends, FCM Mobile, dan
               Valorant.
             </p>
+
           </div>
 
           <div class="project-bottom">
-            <span>INVITE · CRUD · ADMIN</span><span>↗</span>
+            <span>INVITE · CRUD · ADMIN</span>
+            <span>↗</span>
           </div>
+
         </a>
+
       </div>
+
     </section>
 
+    <!-- ==================== ACHIEVEMENT ==================== -->
+
     <section class="section achievement-section" id="achievement">
+
       <div class="section-heading reveal">
         <span>04</span>
         <h2>ACHIEVEMENT</h2>
       </div>
 
       <div class="achievement-card reveal" id="achievementOpen">
-        <div class="achievement-year">2026</div>
+
+        <div class="achievement-year">
+          2026
+        </div>
 
         <div class="achievement-main">
-          <span>#1 · PLAYIT COMPETITION</span>
-          <h3>JUARA 1 BEST NETWORK</h3>
+
+          <span>
+            #1 · PLAYIT COMPETITION
+          </span>
+
+          <h3>
+            JUARA 1 BEST NETWORK
+          </h3>
+
           <p>
             Penghargaan dalam kategori Best Network pada PLAYIT Competition.
           </p>
+
         </div>
 
         <a
           class="achievement-button"
           href="https://tugumalang.id/bangga-siswa-smk-pgri-3-malang-raih-juara-i-lomba-pc-assembly-race-sisihkan-60-peserta-terbaik-se-indonesia/"
           target="_blank"
-        >VISIT</a>
+        >
+          VISIT
+        </a>
+
       </div>
+
     </section>
 
+    <!-- ==================== LEARNING ==================== -->
+
     <section class="section learning-section" id="learning">
+
       <div class="section-heading reveal">
         <span>05</span>
         <h2>CURRENTLY LEARNING</h2>
       </div>
 
       <div class="learning-grid">
+
         <div class="learning-item reveal">
-          <span>01</span><strong>Laravel</strong><small>Backend Framework</small>
+          <span>01</span>
+          <strong>Laravel</strong>
+          <small>Backend Framework</small>
         </div>
 
         <div class="learning-item reveal">
-          <span>02</span><strong>REST API</strong><small>API Development</small>
+          <span>02</span>
+          <strong>REST API</strong>
+          <small>API Development</small>
         </div>
 
         <div class="learning-item reveal">
-          <span>03</span><strong>Database</strong><small>MySQL & Data Management</small>
+          <span>03</span>
+          <strong>Database</strong>
+          <small>MySQL & Data Management</small>
         </div>
+
       </div>
+
     </section>
 
+    <!-- ==================== CONTACT ==================== -->
+
     <section class="section contact-section" id="contact">
+
       <div class="section-heading reveal">
         <span>06</span>
         <h2>CONTACT</h2>
       </div>
 
       <div class="contact-content reveal">
-        <h3>LET'S BUILD<br /><span>SOMETHING.</span></h3>
+
+        <h3>
+          LET'S BUILD<br />
+          <span>SOMETHING.</span>
+        </h3>
 
         <p>
           Terbuka untuk kesempatan belajar, berkolaborasi, dan berkembang di
@@ -378,22 +727,47 @@
         </p>
 
         <div class="contact-links">
-          <a href="mailto:natanputrarpl@gmail.com">natanputrarpl@gmail.com ↗</a>
-          <a href="https://github.com/NATANPUTRA">GitHub ↗</a>
+
+          <a href="mailto:natanputrarpl@gmail.com">
+            natanputrarpl@gmail.com ↗
+          </a>
+
+          <a href="https://github.com/NATANPUTRA">
+            GitHub ↗
+          </a>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
+  <!-- ==================== FOOTER ==================== -->
+
   <footer class="footer">
+
     <div>
-      <strong>NP<span class="footer-mark">//</span></strong><span>© 2026 Natan Putra. Built with HTML, CSS &
-        JavaScript.</span>
+
+      <strong>
+        NP<span class="footer-mark">//</span>
+      </strong>
+
+      <span>
+        © 2026 Natan Putra. Built with HTML, CSS & JavaScript.
+      </span>
+
     </div>
-    <a href="#home">BACK TO TOP ↑</a>
+
+    <a href="#home">
+      BACK TO TOP ↑
+    </a>
+
   </footer>
 
   <script src="script.js"></script>
+
 </body>
 
 </html>
