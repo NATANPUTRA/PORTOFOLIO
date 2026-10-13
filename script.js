@@ -325,7 +325,7 @@ function closeProjectModalForce() {
   if (modal) modal.classList.remove("active");
 }
 
-// Aktifkan skill bar saat diklik/tap (khususnya untuk mobile)
+// Aktifkan skill bar saat diklik/taddp (khususnya untuk mobile)
 document.querySelectorAll('.skill-card').forEach(card => {
   card.addEventListener('click', () => {
     document.querySelectorAll('.skill-card').forEach(c => c.classList.remove('active'));
