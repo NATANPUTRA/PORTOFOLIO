@@ -700,9 +700,18 @@ button {
   color: var(--accent);
 }
 
-.projects-swiper {
-  padding-bottom: 45px !important;
+.projects-section {
   position: relative;
+}
+
+.projects-swiper {
+  overflow: visible !important;
+  padding: 15px 5px 45px 5px !important; /* Menambah ruang padding atas agar tidak terpotong */
+  margin-top: 10px;
+}
+
+.swiper-slide {
+  overflow: visible !important;
 }
 
 .project-card {
@@ -713,16 +722,16 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: 0.3s;
-}
-
-.project-card-interactive {
-  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover {
   border-color: var(--accent);
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  z-index: 20; /* Naik ke atas layer lain saat dipilih/di-hover */
 }
 
 .project-head,
@@ -789,7 +798,7 @@ button {
 }
 
 /* =========================
-   PROJECT MODAL OVERLAYff
+   PROJECT MODAL OVERLAY
 ========================= */
 
 .proj-modal-overlay {
