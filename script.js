@@ -132,60 +132,39 @@ const learningItems = [
   },
 ];
 
-const learningFloatContent =
-  document.getElementById("learningFloatContent");
-
-const learningIcon =
-  document.getElementById("learningIcon");
-
-const learningLevel =
-  document.getElementById("learningLevel");
-
-const learningName =
-  document.getElementById("learningName");
+const learningFloatContent = document.getElementById("learningFloatContent");
+const learningIcon = document.getElementById("learningIcon");
+const learningLevel = document.getElementById("learningLevel");
+const learningName = document.getElementById("learningName");
 
 let learningIndex = 0;
 
 setInterval(() => {
+  if (!learningFloatContent) return;
 
   learningFloatContent.classList.add("changing");
 
   setTimeout(() => {
-
-    learningIndex =
-      (learningIndex + 1) % learningItems.length;
-
-    const item =
-      learningItems[learningIndex];
+    learningIndex = (learningIndex + 1) % learningItems.length;
+    const item = learningItems[learningIndex];
 
     learningIcon.innerHTML = item.icon;
     learningLevel.textContent = item.level;
     learningName.textContent = item.name;
 
     learningFloatContent.classList.remove("changing");
-
   }, 250);
-
 }, 3000);
 
 /* =========================
    PAGE LOADER
 ========================= */
 
-const loader =
-  document.getElementById("loader");
-
-const loaderTech =
-  document.getElementById("loaderTech");
-
-const loaderName =
-  document.getElementById("loaderName");
-
-const loaderProgress =
-  document.getElementById("loaderProgress");
-
-const loaderPercent =
-  document.getElementById("loaderPercent");
+const loader = document.getElementById("loader");
+const loaderTech = document.getElementById("loaderTech");
+const loaderName = document.getElementById("loaderName");
+const loaderProgress = document.getElementById("loaderProgress");
+const loaderPercent = document.getElementById("loaderPercent");
 
 const loaderItems = [
   {
@@ -221,9 +200,8 @@ const loaderItems = [
 let loaderIndex = 0;
 let loaderValue = 0;
 
-/* Progress */
-
 const loaderInterval = setInterval(() => {
+  if (!loaderProgress || !loaderPercent) return;
 
   loaderValue += Math.floor(Math.random() * 7) + 4;
 
@@ -231,32 +209,24 @@ const loaderInterval = setInterval(() => {
     loaderValue = 100;
   }
 
-  loaderProgress.style.width =
-    `${loaderValue}%`;
-
-  loaderPercent.textContent =
-    `${loaderValue}%`;
+  loaderProgress.style.width = `${loaderValue}%`;
+  loaderPercent.textContent = `${loaderValue}%`;
 
   if (loaderValue >= 100) {
-
     clearInterval(loaderInterval);
 
     setTimeout(() => {
-
-      loader.classList.add("hide");
+      if (loader) loader.classList.add("hide");
 
       setTimeout(() => {
-        loader.remove();
+        if (loader) loader.remove();
       }, 700);
-
     }, 400);
   }
-
 }, 175);
 
-/* Technology animation */
-
 const loaderTechInterval = setInterval(() => {
+  if (!loaderTech || !loaderName) return;
 
   if (loaderValue >= 100) {
     clearInterval(loaderTechInterval);
@@ -266,21 +236,99 @@ const loaderTechInterval = setInterval(() => {
   loaderTech.classList.add("changing");
 
   setTimeout(() => {
+    loaderIndex = (loaderIndex + 1) % loaderItems.length;
+    const item = loaderItems[loaderIndex];
 
-    loaderIndex =
-      (loaderIndex + 1) % loaderItems.length;
-
-    const item =
-      loaderItems[loaderIndex];
-
-    loaderTech.innerHTML =
-      item.icon;
-
-    loaderName.textContent =
-      item.name;
+    loaderTech.innerHTML = item.icon;
+    loaderName.textContent = item.name;
 
     loaderTech.classList.remove("changing");
-
   }, 200);
-
 }, 650);
+
+/* =========================
+   PROJECTS SWIPER SLIDER
+========================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".projects-swiper")) {
+    new Swiper(".projects-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 25,
+      loop: true,
+      autoplay: {
+        delay: 4500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".proj-next",
+        prevEl: ".proj-prev",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 25,
+        },
+      },
+    });
+  }
+});
+
+/* =========================
+   PROJECT MODAL FUNCTIONS
+========================= */
+
+function openProjectModal(no, title, stack, desc, category, status, url) {
+  const mTag = document.getElementById("mTag");
+  const mTitle = document.getElementById("mTitle");
+  const mStack = document.getElementById("mStack");
+  const mDesc = document.getElementById("mDesc");
+  const mStatus = document.getElementById("mStatus");
+  const visitBtn = document.getElementById("mLink");
+  const visitBtnText = document.getElementById("mLinkText");
+
+  if (mTag) mTag.textContent = `${no} // PROJECT OVERVIEW`;
+  if (mTitle) mTitle.innerHTML = title;
+  if (mStack) mStack.textContent = stack;
+  if (mDesc) mDesc.textContent = desc;
+  if (mStatus) mStatus.textContent = `${category} · ${status}`;
+
+  if (visitBtn && visitBtnText) {
+    if (url === "#") {
+      visitBtn.href = "javascript:void(0)";
+      visitBtn.style.opacity = "0.5";
+      visitBtnText.textContent = "DEMO / LINK NOT AVAILABLE YET";
+    } else {
+      visitBtn.href = url;
+      visitBtn.style.opacity = "1";
+      visitBtnText.textContent = "VISIT PROJECT / SOURCE CODE";
+    }
+  }
+
+  const modal = document.getElementById("projModal");
+  if (modal) modal.classList.add("active");
+}
+
+function closeProjectModal(e) {
+  if (e.target.id === "projModal") {
+    const modal = document.getElementById("projModal");
+    if (modal) modal.classList.remove("active");
+  }
+}
+
+function closeProjectModalForce() {
+  const modal = document.getElementById("projModal");
+  if (modal) modal.classList.remove("active");
+}
+
+// Aktifkan skill bar saat diklik/tap (khususnya untuk mobile)
+document.querySelectorAll('.skill-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.skill-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});

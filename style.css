@@ -125,6 +125,7 @@ button {
 
 .hero-right {
   position: relative;
+  width: 100%;
 }
 
 .eyebrow,
@@ -230,6 +231,14 @@ button {
   padding: 22px;
 }
 
+.dashboard-top,
+.dashboard-content,
+.dashboard-big-letter,
+.dashboard-arrow {
+  position: relative;
+  z-index: 2;
+}
+
 .dashboard-top {
   display: flex;
   justify-content: space-between;
@@ -239,8 +248,6 @@ button {
 }
 
 .dashboard-content {
-  position: relative;
-  z-index: 2;
   margin-top: 90px;
 }
 
@@ -297,6 +304,7 @@ button {
   line-height: 1;
   color: var(--surface2);
   font-weight: 800;
+  z-index: 1;
 }
 
 .dashboard-arrow {
@@ -313,13 +321,13 @@ button {
 
 .learning-float {
   position: absolute;
-  right: -15px;
-  bottom: 25px;
+  right: 20px;
+  bottom: 20px;
   width: 185px;
   height: 58px;
   background: var(--accent);
   color: #0a0a0a;
-  padding: 15px 18px;
+  padding: 12px 16px;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -377,6 +385,7 @@ button {
   border-bottom: 1px solid var(--line);
   overflow: hidden;
   padding: 16px 0;
+  white-space: nowrap;
 }
 
 .marquee-track {
@@ -384,11 +393,15 @@ button {
   display: flex;
   align-items: center;
   gap: 25px;
-  animation: marquee 25s linear infinite;
+  animation: marquee 30s linear infinite;
   font-family: "DM Mono", monospace;
   font-size: 10px;
   letter-spacing: 1.5px;
   color: var(--muted);
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 .marquee b {
@@ -396,7 +409,10 @@ button {
 }
 
 @keyframes marquee {
-  to {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
     transform: translateX(-50%);
   }
 }
@@ -506,16 +522,95 @@ button {
   gap: 10px;
 }
 
+/* =========================
+   FIXED SKILLS UI & VISIBLE BAR
+========================= */
+
+/* =========================
+   SKILL BAR ANIMATION ON HOVER / ACTIVE
+========================= */
+
 .skill-card {
   border: 1px solid var(--line);
   background: var(--surface);
-  padding: 25px 18px;
+  padding: 20px 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  transition: 0.25s;
+  justify-content: space-between;
+  min-height: 140px;
+  gap: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
 }
 
+.skill-card:hover,
+.tool-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.skill-icon {
+  font-size: 32px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+}
+
+.skill-info {
+  margin-top: auto;
+}
+
+.skill-info strong {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-right: 6px;
+}
+
+.skill-info small {
+  font-family: "DM Mono", monospace;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+/* Background jalur bar */
+.skill-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--line);
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.3; /* Samar sebelum dipilih */
+  transition: opacity 0.3s ease;
+}
+
+/* Kondisi awal: Bar sembunyi (width 0) */
+.skill-bar span {
+  display: block;
+  height: 100%;
+  width: 0% !important; /* Mulai dari 0 */
+  background: var(--accent) !important;
+  box-shadow: 0 0 10px var(--accent);
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* KETIKA DIPILIH / DI-HOVER: Bar baru keluar dan jalan mengisi persentase */
+.skill-card:hover .skill-bar,
+.skill-card.active .skill-bar {
+  opacity: 1;
+}
+
+.skill-card:hover .skill-bar span,
+.skill-card.active .skill-bar span {
+  width: var(--progress-width) !important; /* Mengisi sesuai variabel persentase */
+}
 .skill-card:hover,
 .tool-card:hover {
   border-color: var(--accent);
@@ -574,13 +669,40 @@ button {
 }
 
 /* =========================
-   PROJECTS
+   PROJECTS (SWIPER & CARDS)
 ========================= */
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+.projects-nav-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.proj-prev,
+.proj-next {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: "DM Mono", monospace;
+}
+
+.proj-prev:hover,
+.proj-next:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.projects-swiper {
+  padding-bottom: 45px !important;
+  position: relative;
 }
 
 .project-card {
@@ -592,6 +714,10 @@ button {
   flex-direction: column;
   justify-content: space-between;
   transition: 0.3s;
+}
+
+.project-card-interactive {
+  cursor: pointer;
 }
 
 .project-card:hover {
@@ -647,6 +773,148 @@ button {
 .project-bottom {
   border-top: 1px solid var(--line);
   padding-top: 14px;
+}
+
+.projects-swiper .swiper-pagination-bullet {
+  background: var(--muted) !important;
+  opacity: 0.4;
+  border-radius: 0;
+  width: 20px;
+  height: 3px;
+}
+
+.projects-swiper .swiper-pagination-bullet-active {
+  background: var(--accent) !important;
+  opacity: 1;
+}
+
+/* =========================
+   PROJECT MODAL OVERLAY
+========================= */
+
+.proj-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.proj-modal-overlay.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.proj-modal-box {
+  background: var(--surface) !important;
+  border: 1px solid var(--accent) !important;
+  width: min(580px, 100%) !important;
+  padding: 30px !important;
+  position: relative !important;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.proj-modal-overlay.active .proj-modal-box {
+  transform: scale(1);
+}
+
+.proj-modal-close {
+  position: absolute !important;
+  top: 15px !important;
+  right: 15px !important;
+  background: transparent !important;
+  border: 1px solid var(--line) !important;
+  color: var(--text) !important;
+  width: 32px !important;
+  height: 32px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: "DM Mono", monospace !important;
+}
+
+.proj-modal-close:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+.proj-modal-tag {
+  font-family: "DM Mono", monospace !important;
+  font-size: 10px !important;
+  color: var(--accent) !important;
+  letter-spacing: 2px !important;
+}
+
+.proj-modal-title {
+  font-size: clamp(24px, 4vw, 36px) !important;
+  line-height: 1.1 !important;
+  margin: 12px 0 16px !important;
+  color: var(--text) !important;
+}
+
+.proj-modal-desc {
+  color: var(--muted) !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+  margin-bottom: 20px !important;
+}
+
+.proj-modal-features {
+  border-top: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+  padding: 14px 0 !important;
+  margin-bottom: 20px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+  font-family: "DM Mono", monospace !important;
+  font-size: 10px !important;
+}
+
+.proj-modal-features span {
+  color: var(--muted) !important;
+  display: block !important;
+  font-size: 8px !important;
+  margin-bottom: 4px !important;
+}
+
+.proj-modal-features strong {
+  color: var(--text) !important;
+}
+
+.btn-visit-animated {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 14px 18px !important;
+  background: var(--accent) !important;
+  color: #0a0a0a !important;
+  font-family: "DM Mono", monospace !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--accent) !important;
+  text-decoration: none !important;
+  transition: 0.25s !important;
+}
+
+.btn-visit-animated:hover {
+  background: transparent !important;
+  color: var(--accent) !important;
 }
 
 /* =========================
@@ -809,86 +1077,6 @@ footer strong {
 }
 
 /* =========================
-   MODAL
-========================= */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  background: #000b;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 200;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal-box {
-  width: min(560px, 100%);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: 35px;
-  position: relative;
-}
-
-.modal-close {
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  background: none;
-  border: 0;
-  color: var(--text);
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.modal-box > span {
-  font-size: 9px;
-  color: var(--accent);
-  letter-spacing: 1px;
-}
-
-.modal-box h2 {
-  font-size: 45px;
-  line-height: 0.95;
-  letter-spacing: -2px;
-  margin: 25px 0;
-}
-
-.modal-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-.modal-info div {
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
-}
-
-.modal-info small {
-  display: block;
-  font-size: 7px;
-  color: var(--muted);
-  margin-bottom: 5px;
-}
-
-.modal-info strong {
-  font-size: 11px;
-}
-
-.modal-box p {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-top: 25px;
-}
-
-/* =========================
    REVEAL
 ========================= */
 
@@ -1038,7 +1226,7 @@ body:before {
 }
 
 /* =========================
-   TABLET
+   RESPONSIVE
 ========================= */
 
 @media (max-width: 900px) {
@@ -1095,10 +1283,6 @@ body:before {
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 600px) {
 
   .section {
@@ -1146,7 +1330,8 @@ body:before {
   }
 
   .learning-float {
-    right: 0;
+    right: 15px;
+    bottom: 15px;
   }
 
   .about-grid {
@@ -1196,14 +1381,6 @@ body:before {
     margin-top: 10px;
   }
 
-  .modal-box h2 {
-    font-size: 35px;
-  }
-
-  .modal-info {
-    grid-template-columns: 1fr;
-  }
-
   .loader-inner {
     width: calc(100% - 70px);
   }
@@ -1243,4 +1420,75 @@ body:before {
   .project-content h3 {
     font-size: 34px;
   }
+
+  /* =========================
+   ENHANCED SKILLS UI STYLING
+========================= */
+
+.skill-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-card:hover::after {
+  opacity: 1;
+}
+
+.skill-card:hover,
+.tool-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Garis Indikator Level Penguasaan Skill */
+.skill-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--line);
+  margin-top: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transition: width 0.8s ease-in-out;
+}
+
+.skill-info strong {
+  display: block;
+  font-size: 14px;
+  letter-spacing: -0.5px;
+}
+
+.skill-info small {
+  font-family: "DM Mono", monospace;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+}
 }
