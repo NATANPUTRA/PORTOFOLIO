@@ -34,6 +34,18 @@ body {
   color: var(--text);
   transition: 0.3s;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* BACKGROUND CANVAS GRID STYLING */
+#gridCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
 
 a {
@@ -141,9 +153,7 @@ button {
 .learning-float span,
 .about-facts span,
 .contact-links,
-.achievement-card > div:first-child,
-.modal-box > span,
-.modal-info small {
+.achievement-card > div:first-child {
   font-family: "DM Mono", monospace;
 }
 
@@ -315,10 +325,6 @@ button {
   color: var(--accent);
 }
 
-/* =========================
-   FLOATING SKILL
-========================= */
-
 .learning-float {
   position: absolute;
   right: 20px;
@@ -358,10 +364,6 @@ button {
   font-size: 7px;
   letter-spacing: 1px;
   color: #0a0a0a;
-  text-shadow:
-    0 0 3px var(--accent),
-    0 0 7px var(--accent),
-    0 0 12px var(--accent);
 }
 
 .learning-float strong {
@@ -369,16 +371,6 @@ button {
   font-size: 13px;
   margin-top: 3px;
 }
-
-.learning-api-icon {
-  font-family: "DM Mono", monospace;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-/* =========================
-   MARQUEE
-========================= */
 
 .marquee {
   border-top: 1px solid var(--line);
@@ -400,26 +392,14 @@ button {
   color: var(--muted);
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
 .marquee b {
   color: var(--accent);
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-
-/* =========================
-   SECTION HEADING
-========================= */
 
 .section-heading {
   display: flex;
@@ -439,10 +419,6 @@ button {
   font-size: 12px;
   letter-spacing: 2px;
 }
-
-/* =========================
-   ABOUT
-========================= */
 
 .about-grid {
   display: grid;
@@ -491,10 +467,6 @@ button {
   font-size: 11px;
 }
 
-/* =========================
-   SKILLS
-========================= */
-
 .skill-group {
   margin-bottom: 55px;
 }
@@ -522,14 +494,6 @@ button {
   gap: 10px;
 }
 
-/* =========================
-   FIXED SKILLS UI & VISIBLE BAR
-========================= */
-
-/* =========================
-   SKILL BAR ANIMATION ON HOVER / ACTIVE
-========================= */
-
 .skill-card {
   border: 1px solid var(--line);
   background: var(--surface);
@@ -541,7 +505,6 @@ button {
   gap: 12px;
   transition: all 0.3s ease;
   position: relative;
-  overflow: visible;
   cursor: pointer;
 }
 
@@ -552,7 +515,8 @@ button {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-.skill-icon {
+.skill-icon,
+.tool-icon {
   font-size: 32px;
   height: 36px;
   display: flex;
@@ -572,14 +536,14 @@ button {
   margin-right: 6px;
 }
 
-.skill-info small {
+.skill-info small,
+.tool-card small {
   font-family: "DM Mono", monospace;
   color: var(--muted);
   font-size: 9px;
   letter-spacing: 0.5px;
 }
 
-/* Background jalur bar */
 .skill-bar {
   width: 100%;
   height: 3px;
@@ -587,21 +551,19 @@ button {
   margin-top: 8px;
   position: relative;
   overflow: hidden;
-  opacity: 0.3; /* Samar sebelum dipilih */
+  opacity: 0.3;
   transition: opacity 0.3s ease;
 }
 
-/* Kondisi awal: Bar sembunyi (width 0) */
 .skill-bar span {
   display: block;
   height: 100%;
-  width: 0% !important; /* Mulai dari 0 */
+  width: 0% !important;
   background: var(--accent) !important;
   box-shadow: 0 0 10px var(--accent);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* KETIKA DIPILIH / DI-HOVER: Bar baru keluar dan jalan mengisi persentase */
 .skill-card:hover .skill-bar,
 .skill-card.active .skill-bar {
   opacity: 1;
@@ -609,31 +571,7 @@ button {
 
 .skill-card:hover .skill-bar span,
 .skill-card.active .skill-bar span {
-  width: var(--progress-width) !important; /* Mengisi sesuai variabel persentase */
-}
-.skill-card:hover,
-.tool-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-3px);
-}
-
-.skill-icon,
-.tool-icon {
-  font-size: 28px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-}
-
-.skill-card strong {
-  font-size: 13px;
-}
-
-.skill-card small,
-.tool-card small {
-  font-family: "DM Mono", monospace;
-  color: var(--muted);
-  font-size: 8px;
+  width: var(--progress-width) !important;
 }
 
 .text-icon {
@@ -658,19 +596,11 @@ button {
   transition: 0.25s;
 }
 
-.tool-icon {
-  font-size: 24px;
-}
-
 .tool-card strong {
   display: block;
   font-size: 11px;
   margin-bottom: 3px;
 }
-
-/* =========================
-   PROJECTS (SWIPER & CARDS)
-========================= */
 
 .projects-nav-wrapper {
   display: flex;
@@ -700,18 +630,10 @@ button {
   color: var(--accent);
 }
 
-.projects-section {
-  position: relative;
-}
-
 .projects-swiper {
   overflow: visible !important;
-  padding: 15px 5px 45px 5px !important; /* Menambah ruang padding atas agar tidak terpotong */
+  padding: 15px 5px 45px 5px !important;
   margin-top: 10px;
-}
-
-.swiper-slide {
-  overflow: visible !important;
 }
 
 .project-card {
@@ -731,7 +653,7 @@ button {
   border-color: var(--accent);
   transform: translateY(-6px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-  z-index: 20; /* Naik ke atas layer lain saat dipilih/di-hover */
+  z-index: 20;
 }
 
 .project-head,
@@ -797,10 +719,6 @@ button {
   opacity: 1;
 }
 
-/* =========================
-   PROJECT MODAL OVERLAY
-========================= */
-
 .proj-modal-overlay {
   position: fixed !important;
   top: 0 !important;
@@ -809,7 +727,6 @@ button {
   height: 100vh !important;
   background: rgba(0, 0, 0, 0.85) !important;
   backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
   z-index: 9999 !important;
   display: flex !important;
   align-items: center !important;
@@ -926,10 +843,6 @@ button {
   color: var(--accent) !important;
 }
 
-/* =========================
-   ACHIEVEMENT
-========================= */
-
 .achievement-card {
   border: 1px solid var(--line);
   background: var(--surface);
@@ -952,9 +865,7 @@ button {
 }
 
 .achievement-main > span {
-  font:
-    9px "DM Mono",
-    monospace;
+  font: 9px "DM Mono", monospace;
   color: var(--muted);
   letter-spacing: 1px;
 }
@@ -971,16 +882,10 @@ button {
 }
 
 .achievement-button {
-  font:
-    9px "DM Mono",
-    monospace;
+  font: 9px "DM Mono", monospace;
   text-align: right;
   color: var(--text);
 }
-
-/* =========================
-   LEARNING
-========================= */
 
 .learning-grid {
   display: grid;
@@ -994,9 +899,7 @@ button {
 }
 
 .learning-item span {
-  font:
-    9px "DM Mono",
-    monospace;
+  font: 9px "DM Mono", monospace;
   color: var(--accent);
 }
 
@@ -1010,10 +913,6 @@ button {
   font-size: 10px;
   color: var(--muted);
 }
-
-/* =========================
-   CONTACT
-========================= */
 
 .contact-section {
   padding-bottom: 150px;
@@ -1052,25 +951,20 @@ button {
   padding-bottom: 7px;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 .footer {
   border-top: 1px solid var(--line);
   padding: 25px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font:
-    9px "DM Mono",
-    monospace;
+  font: 9px "DM Mono", monospace;
   color: var(--muted);
 }
 
 .footer strong {
   color: var(--text);
   margin-right: 18px;
+  white-space: nowrap;
 }
 
 .footer a {
@@ -1080,14 +974,6 @@ button {
 .footer-mark {
   color: var(--accent);
 }
-
-footer strong {
-  white-space: nowrap;
-}
-
-/* =========================
-   REVEAL
-========================= */
 
 .reveal {
   opacity: 0;
@@ -1100,30 +986,6 @@ footer strong {
   transform: none;
 }
 
-/* =========================
-   MOUSE GLOW
-========================= */
-
-body:before {
-  content: "";
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: var(--accent);
-  opacity: 0.035;
-  filter: blur(100px);
-  transform: translate(-50%, -50%);
-  left: var(--mouse-x, -100px);
-  top: var(--mouse-y, -100px);
-  z-index: -1;
-}
-
-/* =========================
-   LOADING SCREEN
-========================= */
-
 .loader {
   position: fixed;
   inset: 0;
@@ -1135,9 +997,7 @@ body:before {
   justify-content: center;
   opacity: 1;
   visibility: visible;
-  transition:
-    opacity 0.7s ease,
-    visibility 0.7s ease;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
 }
 
 .loader.hide {
@@ -1172,9 +1032,7 @@ body:before {
   align-items: center;
   font-size: 30px;
   color: #d9ff3f;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .loader-tech.changing {
@@ -1203,9 +1061,7 @@ body:before {
   width: 0;
   height: 100%;
   background: #d9ff3f;
-  box-shadow:
-    0 0 8px #d9ff3f,
-    0 0 18px #d9ff3f;
+  box-shadow: 0 0 8px #d9ff3f, 0 0 18px #d9ff3f;
 }
 
 .loader-status {
@@ -1227,47 +1083,35 @@ body:before {
     opacity: 0;
     transform: translateY(15px) scale(0.9);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media (max-width: 900px) {
-
   .hero {
     grid-template-columns: 1fr;
     gap: 60px;
   }
-
   .hero-right {
     max-width: 700px;
     width: 100%;
     margin: auto;
   }
-
   .about-grid {
     gap: 45px;
   }
-
   .skill-grid,
   .tools-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .nav-links {
     display: none;
   }
-
   .menu-toggle {
     display: block;
   }
-
   .mobile-menu {
     position: fixed;
     top: 76px;
@@ -1277,227 +1121,104 @@ body:before {
     border-bottom: 1px solid var(--line);
     padding: 25px;
     z-index: 90;
+    display: none;
   }
-
   .mobile-menu.active {
     display: grid;
     gap: 18px;
   }
-
   .mobile-menu a {
-    font:
-      11px "DM Mono",
-      monospace;
+    font: 11px "DM Mono", monospace;
     color: var(--muted);
   }
 }
 
 @media (max-width: 600px) {
-
   .section {
     width: min(100% - 30px, 1180px);
     padding: 80px 0;
   }
-
   .navbar {
     padding: 0 15px;
   }
-
-  .hero {
-    min-height: auto;
-    padding-top: 70px;
-  }
-
   .hero h1 {
     font-size: 62px;
     letter-spacing: -4px;
   }
-
-  .hero-description {
-    font-size: 12px;
-  }
-
-  .dashboard-card {
-    height: 390px;
-  }
-
-  .dashboard-content {
-    margin-top: 70px;
-  }
-
-  .dashboard-content h2 {
-    font-size: 85px;
-  }
-
-  .dashboard-info {
-    margin-top: 60px;
+  .skill-grid,
+  .tools-grid,
+  .learning-grid {
     grid-template-columns: 1fr;
   }
+}
 
-  .dashboard-info div:nth-child(n + 2) {
-    display: none;
+/* =========================================================
+   RESPONSIF MOBILE OPTIMIZATION TAMBAHAN (HP)
+========================================================= */
+@media (max-width: 600px) {
+  .section {
+    width: min(100% - 24px, 1180px);
+    padding: 60px 0;
   }
-
-  .learning-float {
-    right: 15px;
-    bottom: 15px;
+  .navbar {
+    padding: 0 16px;
   }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-facts {
-    grid-template-columns: 1fr;
+  
+  .hero h1 {
+    font-size: clamp(42px, 12vw, 56px);
+    letter-spacing: -2px;
   }
 
   .skill-grid,
   .tools-grid,
-  .projects-grid,
-  .learning-grid {
+  .learning-grid,
+  .about-facts {
     grid-template-columns: 1fr;
   }
 
-  .project-card {
-    min-height: 360px;
+  .dashboard-card {
+    height: auto;
+    min-height: 400px;
+    padding: 18px;
+  }
+  
+  .dashboard-info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 40px;
   }
 
-  .project-content {
-    margin-top: 45px;
+  .dashboard-big-letter {
+    font-size: 180px;
+    right: -10px;
+    bottom: -40px;
+  }
+
+  .learning-float {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+    width: 100%;
   }
 
   .achievement-card {
     grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px;
   }
-
+  
   .achievement-button {
     text-align: left;
   }
 
-  .contact-content h3 {
-    font-size: 55px;
-    letter-spacing: -3px;
+  .proj-modal-box {
+    padding: 20px !important;
+    max-height: 85vh;
+    overflow-y: auto;
   }
 
-  .footer {
-    padding: 25px 15px;
-    display: grid;
-    gap: 18px;
+  .proj-modal-features {
+    grid-template-columns: 1fr !important;
   }
-
-  .footer span {
-    display: block;
-    margin-top: 10px;
-  }
-
-  .loader-inner {
-    width: calc(100% - 70px);
-  }
-
-  .loader-logo {
-    letter-spacing: -5px;
-  }
-}
-
-@media (max-width: 450px) {
-
-  .hero h1 {
-    font-size: 52px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .btn {
-    justify-content: space-between;
-  }
-
-  .dashboard-card {
-    height: 350px;
-  }
-
-  .dashboard-content h2 {
-    font-size: 70px;
-  }
-
-  .dashboard-content h3 {
-    font-size: 14px;
-    letter-spacing: 4px;
-  }
-
-  .project-content h3 {
-    font-size: 34px;
-  }
-
-  /* =========================
-   ENHANCED SKILLS UI STYLING
-========================= */
-
-.skill-card {
-  border: 1px solid var(--line);
-  background: var(--surface);
-  padding: 22px 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 14px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--accent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.skill-card:hover::after {
-  opacity: 1;
-}
-
-.skill-card:hover,
-.tool-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-/* Garis Indikator Level Penguasaan Skill */
-.skill-bar {
-  width: 100%;
-  height: 3px;
-  background: var(--line);
-  margin-top: 4px;
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-bar span {
-  display: block;
-  height: 100%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
-  transition: width 0.8s ease-in-out;
-}
-
-.skill-info strong {
-  display: block;
-  font-size: 14px;
-  letter-spacing: -0.5px;
-}
-
-.skill-info small {
-  font-family: "DM Mono", monospace;
-  color: var(--muted);
-  font-size: 8px;
-  letter-spacing: 0.5px;
-}
 }
